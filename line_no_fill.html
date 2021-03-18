@@ -1,0 +1,77 @@
+<html>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.common.dev.min.js"
+            integrity="sha512-PkyFg1MEb/EwsFAqzqvZqWdMT4ItV+E1NgOtfBC9X8UecJcO9bwirD+v/9tJwci4wTNHdNYBk4ev6ceb1hy73g=="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div id="app">
+
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        template: `
+<div style="height: 100%; width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center">
+    <div class="chart" style="height: 60px; width: 150px">
+        <canvas  height="60px"" id="chartId"></canvas>
+     </div>
+</div>`,
+        mounted() {
+            setTimeout(() => {
+                const ctx = document.getElementById("chartId");
+                const myBarChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['green', 'blue', 'red', 'orange', 'yellow', 'gray', 'black'],
+                        datasets: [{
+                            borderWidth: 1,
+                            data: [12, 24, 30, 18, 24, 36, 24],
+                            borderColor: ['green', 'blue', 'red', 'orange', 'yellow', 'gray', 'black'],
+                            fill: false
+                            // backgroundColor: [...barColors]
+                        }]
+                    },
+                    options: {
+                        label: {
+                            display: false
+                        },
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            // ticks: {
+                            //     display: false
+                            // },
+                            xAxes: [{
+                                display: false,
+                                maxBarThickness: 8,
+                                ticks: {
+                                    min: 0
+                                }
+                            }],
+                            yAxes: [{
+                                display: false,
+                                ticks: {
+                                    min: 0
+                                }
+                            }],
+                        }
+                    }
+                });
+            }, 1000)
+        }
+    })
+</script>
+</body>
+</html>

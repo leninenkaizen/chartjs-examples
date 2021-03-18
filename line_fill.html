@@ -1,0 +1,88 @@
+<html>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.common.dev.min.js"
+            integrity="sha512-PkyFg1MEb/EwsFAqzqvZqWdMT4ItV+E1NgOtfBC9X8UecJcO9bwirD+v/9tJwci4wTNHdNYBk4ev6ceb1hy73g=="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div id="app">
+
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        template: `
+<div style="height: 100%; width: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center">
+    <div class="chart" style="height: 60px; width: 200px">
+        <canvas id="chartId"></canvas>
+     </div>
+</div>`,
+        mounted() {
+            setTimeout(() => {
+                const ctx = document.getElementById("chartId");
+                const myBarChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['green', 'blue', 'red', 'orange', 'yellow', 'gray', 'black'],
+                        datasets: [
+                            {
+                                borderWidth: 0,
+                                data: [12, 24, 45, 18, 24, 36, 24],
+                                fill: true,
+                                backgroundColor: "rgba(92, 34, 154, 0.5)"
+                            },
+                            {
+                                borderWidth: 0,
+                                data: [32, 17, 15, 18, 22, 10, 12],
+                                fill: true,
+                                backgroundColor: "rgba(92, 34, 154, .4)"
+                            },
+                        ]
+                    },
+                    options: {
+                        elements: {
+                            point:{
+                                radius: 0
+                            }
+                        },
+                        label: {
+                            display: false
+                        },
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            // ticks: {
+                            //     display: false
+                            // },
+                            xAxes: [{
+                                display: false,
+                                ticks: {
+                                    min: 0
+                                }
+                            }],
+                            yAxes: [{
+                                display: false,
+                                ticks: {
+                                    min: 0
+                                }
+                            }],
+                        }
+                    }
+                });
+            }, 1000)
+        }
+    })
+</script>
+</body>
+</html>
